@@ -20,11 +20,13 @@
 
 
                 <th>Customer name</th>
+                <th>Customer surname</th>
                 <th>Work Code</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Work</th>
-                <th>Worker</th>
+                <th>Worker name</th>
+                <th>Worker surname</th>
                 <th>Price</th>
                 <th>Status</th>
 
@@ -36,13 +38,15 @@
 
             <#list works as work>
                 <tr>
-                    <td>${work.customerName}</td>
+                    <td>${work.customer.name}</td>
+                    <td>${work.customer.surname}</td>
                     <td>${work.code}</td>
                     <td>${work.date}</td>
                     <td>${work.time}</td>
-                    <td>${work.haircutName}</td>
-                    <td>${work.workerName}</td>
-                    <td>${work.workerName}</td>
+                    <td>${work.haircut.name}</td>
+                    <td>${work.worker.name}</td>
+                    <td>${work.worker.surname}</td>
+                    <td>${work.haircut.cost}</td>
                     <td>${work.status}</td>
 
 

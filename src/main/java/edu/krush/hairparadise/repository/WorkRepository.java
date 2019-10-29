@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WorkRepository extends MongoRepository <Work, String> {
+    Work findTopByOrderByCodeDesc();
 }

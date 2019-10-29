@@ -10,4 +10,6 @@ public interface IWorkService {
     Work create(Work work);
     Work update(Work work);
     Work delete(String id);
+
+    Work getByMaxCode();
 }

@@ -20,14 +20,11 @@ import java.util.stream.Collectors;
 public class CustomerWebController {
 
     @Autowired
-    CustomerServiceImpl service;
-
-    @Autowired
     CustomerServiceImpl customerService;
 
     @RequestMapping ("customer/list")
     public String showAll(Model model){
-        List<Customer> list = service.getAll();
+        List<Customer> list = customerService.getAll();
         model.addAttribute("customers", list);
 
         return "customers";
@@ -35,8 +32,8 @@ public class CustomerWebController {
 
     @RequestMapping("customer/delete/{id}")
     String delete(Model model, @PathVariable(value = "id") String id) {
-        service.delete(id);
-        List<Customer> list = service.getAll();
+        customerService.delete(id);
+        List<Customer> list = customerService.getAll();
         //model.addAttribute("workers", list);
         return "redirect:/customer/list";
     }

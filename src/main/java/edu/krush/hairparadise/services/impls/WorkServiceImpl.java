@@ -1,6 +1,6 @@
 package edu.krush.hairparadise.services.impls;
 
-import edu.krush.hairparadise.model.Work;
+import edu.krush.hairparadise.model.*;
 import edu.krush.hairparadise.repository.WorkRepository;
 import edu.krush.hairparadise.services.interfaces.IWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,26 +9,37 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 @Service
 public class WorkServiceImpl implements IWorkService {
 
     List <Work> works = new ArrayList<>();
+    List <Worker> workers = new ArrayList<>();
 
     @Autowired
     WorkRepository repository;
-
+    @Autowired
+    CustomerServiceImpl customerService;
+    @Autowired
+    HaircutServiceImpl haircutService;
+    @Autowired
+    WorkerServiceImpl workerService;
     @PostConstruct
     void init(){
         repository.deleteAll();
 
-        Work work1 = new Work("Patti",  1 , LocalDate.of(2019, 10,24),
-                "13:30", "bold", "wolker", "123", "status");
-        Work work2 = new Work("Patti",  1 , LocalDate.of(2019, 10,24),
-                "13:30", "bold", "wolker", "123", "status");
-        Work work3 = new Work("Patti",  1 , LocalDate.of(2019, 10,24),
-                "13:30", "bold", "wolker", "123", "status");
+        Work work1 = new Work(workerService.getAll().get(0), customerService.getAll().get(0), 1,
+                LocalDate.now(), "18:30", haircutService.getAll().get(0), "status");
+
+        Work work2 = new Work(workerService.getAll().get(1), customerService.getAll().get(1), 2,
+                LocalDate.now(), "18:30", haircutService.getAll().get(1), "status");
+
+        Work work3 = new Work(workerService.getAll().get(2), customerService.getAll().get(2), 3,
+                LocalDate.now(), "18:30", haircutService.getAll().get(2), "status");
+
+
 
         works.add(work1);
         works.add(work2);
@@ -55,6 +66,11 @@ public class WorkServiceImpl implements IWorkService {
     @Override
     public Work update(Work work) {
         return repository.save(work);
+    }
+
+    @Override
+    public Work getByMaxCode() {
+        return repository.findTopByOrderByCodeDesc();
     }
 
     @Override

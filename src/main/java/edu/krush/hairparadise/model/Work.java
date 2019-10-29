@@ -2,42 +2,39 @@ package edu.krush.hairparadise.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
+
 @Document
 public class Work {
     @Id
     private String id;
-    private String customerName;
+    private Worker worker;
+    private Customer customer;
     private int code;
     private LocalDate date;
     private String time;
-    private String haircutName;
-    private String workerName;
-    private String price;
+    private Haircut haircut;
     private String status;
-    /*private int workCode;
-    private int haircutCode;
-    private int customerCode;
-    private String workerName;
-    private LocalDateTime date;*/
+
+
+
 
     public Work() {
     }
 
-    public Work(String customerName, int code, LocalDate date, String time, String haircutName,
-                String workerName, String price, String status) {
-        this.customerName = customerName;
+    public Work(Worker worker, Customer customer, int code,
+                LocalDate date, String time, Haircut haircut, String status) {
+        this.worker = worker;
+        this.customer = customer;
         this.code = code;
         this.date = date;
         this.time = time;
-        this.haircutName = haircutName;
-        this.workerName = workerName;
-        this.price = price;
+        this.haircut = haircut;
         this.status = status;
     }
+
+
 
     public String getId() {
         return id;
@@ -47,12 +44,12 @@ public class Work {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public int getCode() {
@@ -79,28 +76,20 @@ public class Work {
         this.time = time;
     }
 
-    public String getHaircutName() {
-        return haircutName;
+    public Haircut getHaircut() {
+        return haircut;
     }
 
-    public void setHaircutName(String haircutName) {
-        this.haircutName = haircutName;
+    public void setHaircut(Haircut haircut) {
+        this.haircut = haircut;
     }
 
-    public String getWorkerName() {
-        return workerName;
+    public Worker getWorker() {
+        return worker;
     }
 
-    public void setWorkerName(String workerName) {
-        this.workerName = workerName;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     public String getStatus() {

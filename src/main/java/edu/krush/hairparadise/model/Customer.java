@@ -83,9 +83,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-   /* public Gender getGender() {
-        return gender;
-    }*/
+    public String getFullName(){
+        return name + " " + surname;
+    }
+
+
 
     public String getGender() {
         return gender.getName();

@@ -1,17 +1,20 @@
 package edu.krush.hairparadise.forms;
 
+import edu.krush.hairparadise.model.Customer;
+import edu.krush.hairparadise.model.Haircut;
+import edu.krush.hairparadise.model.Worker;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class WorkForm {
     private String id;
-    private String customerName;
+    private Customer customer;
     private int code;
     private String date;
     private String time;
-    private String haircutName;
-    private String workerName;
-    private String price;
+    private Haircut haircut;
+    private Worker worker;
     private String status;
 
     public WorkForm() {
@@ -25,12 +28,12 @@ public class WorkForm {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public int getCode() {
@@ -57,28 +60,20 @@ public class WorkForm {
         this.time = time;
     }
 
-    public String getHaircutName() {
-        return haircutName;
+    public Haircut getHaircut() {
+        return haircut;
     }
 
-    public void setHaircutName(String haircutName) {
-        this.haircutName = haircutName;
+    public void setHaircut(Haircut haircut) {
+        this.haircut = haircut;
     }
 
-    public String getWorkerName() {
-        return workerName;
+    public Worker getWorker() {
+        return worker;
     }
 
-    public void setWorkerName(String workerName) {
-        this.workerName = workerName;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     public String getStatus() {
