@@ -1,4 +1,8 @@
+<#import "./panels/panelForWorker.ftl" as c />
+<@c.page title = "workerForm">
+
 <#import "/spring.ftl" as spring/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,3 +71,5 @@
 
 </body>
 </html>
+
+</@c.page>

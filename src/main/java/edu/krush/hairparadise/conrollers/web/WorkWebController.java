@@ -64,6 +64,20 @@ public class WorkWebController {
         return "workAdd";
     }
 
+    @RequestMapping(value = "/search/{date}")
+    String searchBydate(Model model, @PathVariable(value = "date") LocalDate  date){
+         List<Work> works = workService.searchByDate(date);
+         model.addAttribute("works", works);
+         return "workList";
+    }
+
+    @RequestMapping(value = "/search/{worker}")
+    String searchByWorker(Model model, @PathVariable(value = "worker") Worker worker){
+        List<Work> works = workService.searchByWorker(worker);
+        model.addAttribute("works", works);
+        return "workList";
+    }
+
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
 

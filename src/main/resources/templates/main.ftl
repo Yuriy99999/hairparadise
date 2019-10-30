@@ -13,7 +13,7 @@
     <h3>admin</h3>
     <br>
     <td><a href="/admin/" type = "button" class = "btn btn - success"/>Администратор</td>
-    <td><a href="/customer/list/" type = "button" class = "btn btn - success"/>Мастер</td>
+    <td><a href="/worker/" type = "button" class = "btn btn - success"/>Мастер</td>
     <td><a  type = "button" class = "btn btn - success"/>Бухгалтер</td>
 
 

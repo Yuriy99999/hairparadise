@@ -15,24 +15,66 @@
 </head>
 <body>
 
-<div>
+<div class="container" >
+
     <fieldset>
         <legend>Add work</legend>
         <form name="work" action="" method="POST">
 
-            <br>Worker:<@spring.formSingleSelect "workForm.worker", mavs,""/>
-            <br>Customer:<@spring.formSingleSelect "workForm.customer", mavs1,""/>
-            <br>
-            <@spring.formInput "workForm.date" "" "text"/>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Worker:</span>
+                </div>
+                <@spring.formSingleSelect "workForm.worker", mavs, "class='form-control'"/>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Customer:</span>
+                </div>
+                <@spring.formSingleSelect "workForm.customer", mavs1, "class='form-control'"/>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">date:</span>
+                </div>
+                <@spring.formInput "workForm.date" "class='form-control' readonly  width='276'" "text"/>
+                <script>
+                    $('#date').datepicker({uiLibrary: 'bootstrap4'});
+                </script>
+            </div>
+
+         <#--   <@spring.formInput "workForm.date" "" "text"/>
             <script>
                 $('#date').datepicker({
                     uiLibrary: 'bootstrap4'
                 });
             </script>
-            <br>
-            <br>Time:<@spring.formInput "workForm.time" "" "text"/>
-            <br>Haircut:<@spring.formSingleSelect "workForm.haircut", mavs2,""/>
-            <br>Status:<@spring.formInput "workForm.status" "" "text"/>
+            -->
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Time:</span>
+                </div>
+                <@spring.formInput "workForm.time" "class='form-control'" "text"/>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Haircut:</span>
+                </div>
+                <@spring.formSingleSelect "workForm.haircut", mavs2, "class='form-control'"/>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Status:</span>
+                </div>
+                <@spring.formInput "workForm.status" "class='form-control'" "text"/>
+            </div>
 
 
 
@@ -42,7 +84,7 @@
 
             </script>
             <br>
-            <input type="submit" value="Create"/>
+            <input type="submit" class="btn btn-primary" value="Create"/>
         </form>
     </fieldset>
 </div>

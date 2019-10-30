@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class WorkServiceImpl implements IWorkService {
 
@@ -61,6 +63,18 @@ public class WorkServiceImpl implements IWorkService {
     @Override
     public Work create(Work work) {
         return repository.save(work);
+    }
+
+    public List<Work> searchByDate(LocalDate date) {
+        return this.getAll().stream().filter(item -> item.getDate().equals(date)).
+                collect(Collectors.toList());
+
+    }
+
+    public List<Work> searchByWorker(Worker worker) {
+        return this.getAll().stream().filter(item -> item.getWorker().equals(worker)).
+                collect(Collectors.toList());
+
     }
 
     @Override

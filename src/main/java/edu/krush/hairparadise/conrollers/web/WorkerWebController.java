@@ -62,4 +62,9 @@ public class WorkerWebController {
         return "redirect:/worker/list";
     }
 
+    @RequestMapping ("")
+    public String main(Model model){
+        return "workerForm";
+    }
+
 }
