@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<div>
+<div class = "container">
 
     <br>
     <div>
@@ -45,7 +45,7 @@
                 <th>agender</th>
                 <#--<th>Regular</th>-->
                 <th>Delete</th>
-                <th>Edit</th>
+                <#--<th>Edit</th>-->
 
 
             </tr>

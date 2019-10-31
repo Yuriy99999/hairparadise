@@ -76,6 +76,8 @@
     </div>
 
     <a href="/worker/work/create">create new work</a>
+    <br>
+    <a href="/search1">search by date</a>
 
 </div>
 

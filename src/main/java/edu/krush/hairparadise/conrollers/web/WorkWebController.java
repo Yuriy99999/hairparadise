@@ -70,8 +70,7 @@ public class WorkWebController {
         model.addAttribute("mavs2", mavs2);
 
         model.addAttribute("workForm", workForm);
-        return "/worker/workerW" +
-                " orkAdd";
+        return "/worker/workerWorkAdd";
     }
 
     @RequestMapping(value = "worker/work/create", method = RequestMethod.POST)
@@ -102,11 +101,25 @@ public class WorkWebController {
         return "redirect:/work/list";
     }
 
-    @RequestMapping(value = "/search/{date}")
-    String searchBydate(Model model, @PathVariable(value = "date") LocalDate  date){
-         List<Work> works = workService.searchByDate(date);
-         model.addAttribute("works", works);
-         return "workList";
+    @RequestMapping(value = "search1", method = RequestMethod.POST)
+    String searchBydate(Model model, @ModelAttribute("form") String form){
+
+        //LocalDate date1 = LocalDate.parse(date, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        //System.out.println(date);
+        //System.out.println(date1);
+
+        /*
+        LocalDate date1 = LocalDate.parse(date, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+        List<Work> works = workService.searchByDate(date1);
+        model.addAttribute("works", works);
+        return "worker/workList";
+        */
+        return "/search1";
+    }
+
+    @RequestMapping (value = "/search1")
+    public String datePicker(Model model){
+        return "worker/dateSearch";
     }
 
     @RequestMapping(value = "/search/{worker}")
