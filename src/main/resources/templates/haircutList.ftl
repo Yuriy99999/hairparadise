@@ -1,4 +1,4 @@
-<#import "./panels/panelForWorker.ftl" as c />
+<#import "worker/panelForWorker.ftl" as c />
 <@c.page title = "workerForm">
 
 <#import "/spring.ftl" as spring/>

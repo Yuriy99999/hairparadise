@@ -18,10 +18,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-@RequestMapping("/work")
+//@RequestMapping("/work")
 @CrossOrigin("*")
 
 @Controller
@@ -36,15 +35,25 @@ public class WorkWebController {
     @Autowired
     WorkerServiceImpl workerService;
 
-    @RequestMapping ("/list")
+    @RequestMapping ("work/list")
     public String showAll(Model model){
         List<Work> list = workService.getAll();
         model.addAttribute("works", list);
 
-        return "workList";
+        return "worker/workList";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping ("admin/work/list")
+    public String showAll1(Model model){
+        List<Work> list = workService.getAll();
+        model.addAttribute("works", list);
+
+        return "admin/adminWorkList";
+    }
+
+
+
+    @RequestMapping(value = "worker/work/create", method = RequestMethod.GET)
     public String addWork (Model model){
         WorkForm workForm = new WorkForm();
 
@@ -61,7 +70,36 @@ public class WorkWebController {
         model.addAttribute("mavs2", mavs2);
 
         model.addAttribute("workForm", workForm);
-        return "workAdd";
+        return "/worker/workerW" +
+                " orkAdd";
+    }
+
+    @RequestMapping(value = "worker/work/create", method = RequestMethod.POST)
+
+    String create(Model model, @ModelAttribute("workForm") WorkForm workForm) {
+        String workerId = workForm.getWorker().getId();
+        Worker worker = workerService.get(workerId);
+
+        String customerId = workForm.getCustomer().getId();
+        Customer customer = customerService.get(customerId);
+
+        int code = workService.getByMaxCode().getCode()+1;
+
+        String haircutId = workForm.getHaircut().getId();
+        Haircut haircut = haircutService.get(haircutId);
+
+        Work newWork = new Work(
+                worker,
+                customer,
+                code,
+                LocalDate.parse(workForm.getDate(), DateTimeFormatter.ofPattern("MM/dd/yyyy")),
+                workForm.getTime(),
+                haircut,
+                workForm.getStatus()
+        );
+
+        workService.create(newWork);
+        return "redirect:/work/list";
     }
 
     @RequestMapping(value = "/search/{date}")
@@ -79,38 +117,9 @@ public class WorkWebController {
     }
 
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-
-    String create(Model model, @ModelAttribute("workForm") WorkForm workForm) {
-        String workerId = workForm.getWorker().getId();
-        Worker worker = workerService.get(workerId);
-
-        String customerId = workForm.getCustomer().getId();
-        Customer customer = customerService.get(customerId);
-
-        int code = workService.getByMaxCode().getCode()+1;
-
-        String haircutId = workForm.getHaircut().getId();
-        Haircut haircut = haircutService.get(haircutId);
 
 
-
-
-        Work newWork = new Work(
-                worker,
-                customer,
-                code,
-                LocalDate.parse(workForm.getDate(), DateTimeFormatter.ofPattern("MM/dd/yyyy")),
-                workForm.getTime(),
-                haircut,
-                workForm.getStatus()
-        );
-
-        workService.create(newWork);
-        return "redirect:/work/list";
-    }
-
-    @RequestMapping("/delete/{id}")
+    @RequestMapping("worker/work/delete/{id}")
     String delete(Model model, @PathVariable(value = "id") String id) {
         workService.delete(id);
         List<Work> list = workService.getAll();

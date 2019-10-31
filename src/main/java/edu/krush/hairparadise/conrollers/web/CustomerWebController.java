@@ -27,15 +27,33 @@ public class CustomerWebController {
         List<Customer> list = customerService.getAll();
         model.addAttribute("customers", list);
 
-        return "customers";
+        return "worker/customerList";
     }
+
+    @RequestMapping ("admin/customer/list")
+    public String showAll1(Model model){
+        List<Customer> list = customerService.getAll();
+        model.addAttribute("customers", list);
+
+        return "admin/adminCustomerList";
+    }
+
 
     @RequestMapping("customer/delete/{id}")
     String delete(Model model, @PathVariable(value = "id") String id) {
         customerService.delete(id);
         List<Customer> list = customerService.getAll();
-        //model.addAttribute("workers", list);
+
         return "redirect:/customer/list";
+    }
+
+    @RequestMapping("admin/customer/delete/{id}")
+    String delete1(Model model, @PathVariable(value = "id") String id) {
+        customerService.delete(id);
+        List<Customer> list = customerService.getAll();
+        //model.addAttribute("customers", list);
+        return "redirect:/admin/customer/list";
+
     }
 
     @RequestMapping(value = "customer/create", method = RequestMethod.GET)
@@ -45,7 +63,7 @@ public class CustomerWebController {
                 stream().collect(Collectors.toMap(Gender::getName, Gender::getName));
         model.addAttribute(form);
         model.addAttribute("genders", genders);
-        return "customerAdd";
+        return "/worker/customerAdd";
 
     }
 
@@ -64,6 +82,34 @@ public class CustomerWebController {
         customerService.create(customer);
 
         return "redirect:/customer/list";
+    }
+
+    @RequestMapping(value = "admin/customer/create", method = RequestMethod.GET)
+    public String addCustomer1(Model model){
+        CustomerForm form = new CustomerForm();
+        Map<String, String> genders = Arrays.asList(Gender.values()).
+                stream().collect(Collectors.toMap(Gender::getName, Gender::getName));
+        model.addAttribute(form);
+        model.addAttribute("genders", genders);
+        return "/admin/adminCustomerAdd";
+
+    }
+
+    @RequestMapping(value = "admin/customer/create", method = RequestMethod.POST)
+    public String create1(@ModelAttribute("customerForm") CustomerForm form){
+        int code = customerService.getByMaxCode().getCode()+1;
+        Customer customer = new Customer(
+                code,
+                form.getName(),
+                form.getSurname(),
+                form.getPatronimic(),
+                form.getPhoneNumber(),
+                form.getGender(),
+                false);
+
+        customerService.create(customer);
+
+        return "redirect:/admin/customer/list";
     }
 
 

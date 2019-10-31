@@ -1,4 +1,4 @@
-<#import "./panels/panelForWorker.ftl" as c />
+<#import "panelForWorker.ftl" as c />
 <@c.page title = "workerForm">
 
 <#import "/spring.ftl" as spring/>
@@ -10,16 +10,28 @@
     <link rel="stylesheet"
           type="text/css" href="<@spring.url '/css/style.css'/>"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-image: url('http://getwallpapers.com/wallpaper/full/d/b/0/272602.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h3>work list</h3>
+<div>
+    <h3>work list in worker</h3>
     <br>
     <div>
 
-        <table class="table table-striped table-dark">
+        <table class="table table-striped">
 
-            <tr class="bg-warning">
+            <tr class="thead-light">
 
 
                 <th>Customer name</th>
@@ -34,7 +46,7 @@
                 <th>Status</th>
 
                 <th>Delete</th>
-                <th>Edit</th>
+               <#-- <th>Edit</th>-->
 
 
             </tr>
@@ -53,8 +65,8 @@
                     <td>${work.status}</td>
 
 
-                    <td><a href="/work/delete/${work.id}"/>delete</td>
-                    <td><a href="/work/update/${work.id}" type = "button" class = "btn btn - success"/>edit</td>
+                    <td><a href="/worker/work/delete/${work.id}"/>delete</td>
+                    <#--<td><a href="/work/update/${work.id}" type = "button" class = "btn btn - success"/>edit</td>-->
 
                 </tr>
             </#list>
@@ -63,7 +75,7 @@
 
     </div>
 
-    <a href="/work/create">create new work</a>
+    <a href="/worker/work/create">create new work</a>
 
 </div>
 

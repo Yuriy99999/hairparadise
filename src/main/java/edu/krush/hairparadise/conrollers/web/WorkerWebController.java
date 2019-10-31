@@ -1,19 +1,14 @@
 package edu.krush.hairparadise.conrollers.web;
 
 import edu.krush.hairparadise.forms.WorkerForm;
-import edu.krush.hairparadise.model.Work;
 import edu.krush.hairparadise.model.Worker;
-import edu.krush.hairparadise.services.impls.WorkServiceImpl;
 import edu.krush.hairparadise.services.impls.WorkerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequestMapping("/worker")
 @CrossOrigin("*")
@@ -29,7 +24,7 @@ public class WorkerWebController {
         List<Worker> list = service.getAll();
         model.addAttribute("workers", list);
 
-        return "workerList";
+        return "worker/workerList";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -60,11 +55,12 @@ public class WorkerWebController {
         List<Worker> list = service.getAll();
         //model.addAttribute("workers", list);
         return "redirect:/worker/list";
+
     }
 
     @RequestMapping ("")
     public String main(Model model){
-        return "workerForm";
+        return "/worker/workerForm";
     }
 
 }

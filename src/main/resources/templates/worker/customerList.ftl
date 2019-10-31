@@ -1,4 +1,4 @@
-<#import "./panels/panelForWorker.ftl" as c />
+<#import "panelForWorker.ftl" as c />
 <@c.page title = "workerForm">
 
 <#import "/spring.ftl" as spring/>
@@ -11,19 +11,27 @@
     <link rel="stylesheet"
           type="text/css" href="<@spring.url '/css/style.css'/>"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-image: url('http://getwallpapers.com/wallpaper/full/d/b/0/272602.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h3>Customer list</h3>
-    <br>
+<div>
     <div>
+        <br>
+        <table class="table table-striped">
 
-        <table class="table table-striped table-dark">
+            <tr class="thead-light">
 
-            <tr class="bg-warning">
-
-
-                <th>Id</th>
                 <th>Code</th>
                 <th>Name</th>
                 <th>Surname</th>
@@ -46,8 +54,7 @@
                 </#if>-->
 
                 <tr>
-                    <td>${customer.id}</td>
-                    <td>${customer.code}</td>
+                     <td>${customer.code}</td>
                     <td>${customer.name}</td>
                     <td>${customer.surname}</td>
                     <td>${customer.patronimic}</td>

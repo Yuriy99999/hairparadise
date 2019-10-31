@@ -13,6 +13,18 @@
     <link rel="stylesheet"
           type="text/css" href="<@spring.url '/css/style.css'/>"/>
 
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-image: url('http://getwallpapers.com/wallpaper/full/d/b/0/272602.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
 
@@ -22,7 +34,7 @@
         <legend>Add work</legend>
         <form name="work" action="" method="POST">
 
-            <h3>work add GENERAL</h3>
+            <h3>work ADD in worker</h3>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Worker:</span>
