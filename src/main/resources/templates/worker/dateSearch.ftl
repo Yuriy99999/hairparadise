@@ -19,14 +19,18 @@
 <div class="container">
     <h2>Date  picker</h2>
     <div class="row">
-        <form name="form" action="" method="POST">
+        <form name="dateForm" action="" method="POST">
             <div class="col-md-12">
-                <input id="date" width="270" />
+               <!--<input id="date" width="270" />-->
+
+                <br>Date:<@spring.formInput "dateForm.date", "class='from-control' readonly"/>
                 <script>
                     $('#date').datepicker({
-                        uiLibrary: 'bootstrap'
+                        uiLibrary: 'bootstrap4'
                     });
                 </script>
+                <br/>
+
             </div>
             <div class="col-md-12">
                 <input type="submit" class="btn btn-primary" value="Search"/>

@@ -21,7 +21,7 @@ public class WorkServiceImpl implements IWorkService {
     List <Worker> workers = new ArrayList<>();
 
     @Autowired
-    WorkRepository repository;
+    WorkRepository workRepository;
     @Autowired
     CustomerServiceImpl customerService;
     @Autowired
@@ -30,16 +30,16 @@ public class WorkServiceImpl implements IWorkService {
     WorkerServiceImpl workerService;
     @PostConstruct
     void init(){
-        repository.deleteAll();
+        workRepository.deleteAll();
 
         Work work1 = new Work(workerService.getAll().get(0), customerService.getAll().get(0), 1,
-                LocalDate.now(), "18:30", haircutService.getAll().get(0), "status");
+                LocalDate.now(), "18:30", haircutService.getAll().get(0), Status.AWAITING);
 
         Work work2 = new Work(workerService.getAll().get(1), customerService.getAll().get(1), 2,
-                LocalDate.now(), "18:30", haircutService.getAll().get(1), "status");
+                LocalDate.now(), "18:30", haircutService.getAll().get(1), Status.AWAITING);
 
         Work work3 = new Work(workerService.getAll().get(2), customerService.getAll().get(2), 3,
-                LocalDate.now(), "18:30", haircutService.getAll().get(2), "status");
+                LocalDate.now(), "18:30", haircutService.getAll().get(2), Status.AWAITING);
 
 
 
@@ -47,22 +47,22 @@ public class WorkServiceImpl implements IWorkService {
         works.add(work2);
         works.add(work3);
 
-        repository.saveAll(works);
+        workRepository.saveAll(works);
 
     };
     @Override
     public List<Work> getAll() {
-        return repository.findAll();
+        return workRepository.findAll();
     }
 
     @Override
     public Work get(String id) {
-        return repository.findById(id).orElse(null);
+        return workRepository.findById(id).orElse(null);
     }
 
     @Override
     public Work create(Work work) {
-        return repository.save(work);
+        return workRepository.save(work);
     }
 
     public List<Work> searchByDate(LocalDate date) {
@@ -71,26 +71,32 @@ public class WorkServiceImpl implements IWorkService {
 
     }
 
-    public List<Work> searchByWorker(Worker worker) {
-        return this.getAll().stream().filter(item -> item.getWorker().equals(worker)).
-                collect(Collectors.toList());
+    public List<Work> searchByWorkerId(String workerId) {
+        return this.getAll().stream().filter(worker1 -> worker1.getId().
+                equals(workerId)).collect(Collectors.toList());
+
+        /*return this.getAll().stream().filter(item -> item.getWorker().equals(worker)).
+                collect(Collectors.toList());*/
 
     }
 
+
     @Override
     public Work update(Work work) {
-        return repository.save(work);
+        return workRepository.save(work);
     }
 
     @Override
     public Work getByMaxCode() {
-        return repository.findTopByOrderByCodeDesc();
+        return workRepository.findTopByOrderByCodeDesc();
     }
 
     @Override
     public Work delete(String id) {
         Work work = this.get(id);
-        repository.deleteById(id);
+        workRepository.deleteById(id);
         return work;
     }
+
+
 }

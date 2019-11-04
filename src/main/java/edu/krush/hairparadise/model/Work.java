@@ -15,7 +15,7 @@ public class Work {
     private LocalDate date;
     private String time;
     private Haircut haircut;
-    private String status;
+    private Status status;
 
 
 
@@ -24,7 +24,7 @@ public class Work {
     }
 
     public Work(Worker worker, Customer customer, int code,
-                LocalDate date, String time, Haircut haircut, String status) {
+                LocalDate date, String time, Haircut haircut, Status status) {
         this.worker = worker;
         this.customer = customer;
         this.code = code;
@@ -92,11 +92,11 @@ public class Work {
         this.worker = worker;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -111,5 +111,19 @@ public class Work {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Work{" +
+                "id='" + id + '\'' +
+                ", worker=" + worker +
+                ", customer=" + customer +
+                ", code=" + code +
+                ", date=" + date +
+                ", time='" + time + '\'' +
+                ", haircut=" + haircut +
+                ", status=" + status +
+                '}';
     }
 }

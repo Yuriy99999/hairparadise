@@ -6,7 +6,7 @@ public class HaircutForm {
     private String id;
     private int code;
     private String name;
-    private Gender gender;
+    private String gender;
     private int cost;
 
     public HaircutForm() {
@@ -36,11 +36,11 @@ public class HaircutForm {
         this.name = name;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -50,17 +50,6 @@ public class HaircutForm {
 
     public void setCost(int cost) {
         this.cost = cost;
-    }
-
-    @Override
-    public String toString() {
-        return "HaircutForm{" +
-                "id='" + id + '\'' +
-                ", code=" + code +
-                ", name='" + name + '\'' +
-                ", gender=" + gender +
-                ", cost=" + cost +
-                '}';
     }
 }
 

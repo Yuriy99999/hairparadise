@@ -22,9 +22,9 @@ public class HaircutServiceImpl implements IHaircutService {
     void init(){
         repository.deleteAll();
 
-        Haircut kare = new Haircut(1, "Kare", Gender.FEMALE, 200);
-        Haircut bold = new Haircut(2, "Bold", Gender.MALE, 10);
-        Haircut afro = new Haircut(1, "Afro", Gender.FEMALE, 500);
+        Haircut kare = new Haircut(1, "Kare", "female", 200);
+        Haircut bold = new Haircut(2, "Bold", "male", 10);
+        Haircut afro = new Haircut(3, "Afro", "female", 500);
 
         haircuts.add(kare);
         haircuts.add(bold);
@@ -51,6 +51,10 @@ public class HaircutServiceImpl implements IHaircutService {
     @Override
     public Haircut update(Haircut haircut) {
         return repository.save(haircut);
+    }
+
+    public Haircut getByMaxCode() {
+        return repository.findTopByOrderByCodeDesc();
     }
 
     @Override

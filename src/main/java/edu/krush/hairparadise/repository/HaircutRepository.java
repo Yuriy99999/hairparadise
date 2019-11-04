@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HaircutRepository extends MongoRepository<Haircut, String> {
+
+    Haircut findTopByOrderByCodeDesc();
 }

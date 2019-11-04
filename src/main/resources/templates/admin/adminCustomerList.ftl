@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<div class = "container">
+<div>
 
     <br>
     <div>

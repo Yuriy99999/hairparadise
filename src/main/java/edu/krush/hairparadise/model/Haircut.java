@@ -16,10 +16,15 @@ public class Haircut {
     public Haircut() {
     }
 
-    public Haircut(int code, String name, Gender gender, int cost) {
+    public Haircut(int code, String name, String gender, int cost) {
         this.code = code;
         this.name = name;
-        this.gender = gender;
+        if(gender.equals("male")){
+            this.gender = Gender.MALE;
+        } else
+        {
+            this.gender = Gender.FEMALE;
+        }
         this.cost = cost;
     }
 

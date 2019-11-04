@@ -44,6 +44,7 @@
                 <th>Worker surname</th>
                 <th>Price</th>
                 <th>Status</th>
+                <th>Update Status</th>
 
                 <th>Delete</th>
                <#-- <th>Edit</th>-->
@@ -64,8 +65,9 @@
                     <td>${work.haircut.cost}</td>
                     <td>${work.status}</td>
 
-
+                    <td><a href="/worker/work/update/${work.id}"/>update</td>
                     <td><a href="/worker/work/delete/${work.id}"/>delete</td>
+
                     <#--<td><a href="/work/update/${work.id}" type = "button" class = "btn btn - success"/>edit</td>-->
 
                 </tr>
@@ -78,6 +80,9 @@
     <a href="/worker/work/create">create new work</a>
     <br>
     <a href="/search1">search by date</a>
+    <br>
+    <a href="/search2">search by worker</a>
+
 
 </div>
 

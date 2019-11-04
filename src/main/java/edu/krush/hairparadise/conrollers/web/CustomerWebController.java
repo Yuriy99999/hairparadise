@@ -59,6 +59,7 @@ public class CustomerWebController {
     @RequestMapping(value = "customer/create", method = RequestMethod.GET)
     public String addCustomer(Model model){
         CustomerForm form = new CustomerForm();
+
         Map<String, String> genders = Arrays.asList(Gender.values()).
                 stream().collect(Collectors.toMap(Gender::getName, Gender::getName));
         model.addAttribute(form);
