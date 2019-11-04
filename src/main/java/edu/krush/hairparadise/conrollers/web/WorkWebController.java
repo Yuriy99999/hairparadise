@@ -157,6 +157,7 @@ public class WorkWebController {
 
         Worker worker = workForm.getWorker();
         List<Work> works = workService.getAll().stream().filter(work1 -> work1.
+
                 getWorker().equals(worker)).collect(Collectors.toList());
         //List<Work> works = workService.searchByWorkerId(workForm.getWorker().getId());
         List<Work> works2 = workService.getAll();
