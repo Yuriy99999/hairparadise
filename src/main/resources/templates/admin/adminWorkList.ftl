@@ -32,16 +32,16 @@
             <tr class="thead-light">
 
 
-                <th>aCustomer name</th>
-                <th>aCustomer surname</th>
-                <th>aWork Code</th>
-                <th>aDate</th>
-                <th>aTime</th>
-                <th>aWork</th>
-                <th>aWorker name</th>
-                <th>aWorker surname</th>
-                <th>aPrice</th>
-                <th>aStatus</th>
+                <th>Customer name</th>
+                <th>Customer surname</th>
+                <th>Work Code</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Work</th>
+                <th>Worker name</th>
+                <th>Worker surname</th>
+                <th>Price</th>
+                <th>Status</th>
 
                 <#--<th>Delete</th>
                 <th>Edit</th>-->

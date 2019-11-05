@@ -28,6 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/haircut/list">Cтрижки</a>
             </li>
+
         </ul>
     </div>
 </nav>

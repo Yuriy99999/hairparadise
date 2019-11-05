@@ -12,6 +12,18 @@
 
     <link rel="stylesheet"
           type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-image: url('http://getwallpapers.com/wallpaper/full/d/b/0/272602.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
 

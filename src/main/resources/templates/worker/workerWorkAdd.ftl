@@ -34,7 +34,7 @@
         <legend>Add work</legend>
         <form name="work" action="" method="POST">
 
-            <h3>work ADD in worker</h3>
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Worker:</span>
@@ -81,14 +81,6 @@
                 </div>
                 <@spring.formSingleSelect "workForm.haircut", mavs2, "class='form-control'"/>
             </div>
-
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Status:</span>
-                </div>
-                <@spring.formInput "workForm.status" "class='form-control'" "text"/>
-            </div>
-
 
 
             <br>

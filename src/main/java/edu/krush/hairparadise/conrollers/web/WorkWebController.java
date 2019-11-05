@@ -115,18 +115,18 @@ public class WorkWebController {
     public String datePicker(Model model){
         DateForm dateForm = new DateForm();
         model.addAttribute("dateForm", dateForm);
-        System.out.println("search GET");
+        //System.out.println("search GET");
 
         return "worker/dateSearch";
     }
 
     @RequestMapping(value = "/search1", method = RequestMethod.POST)
     String searchBydate(Model model, @ModelAttribute("dateForm") DateForm dateForm){
-        System.out.println("search POST");
+        //System.out.println("search POST");
         LocalDate date1 = LocalDate.parse(dateForm.getDate(), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 
-        System.out.println("search POST");
-        System.out.println(date1);
+        //System.out.println("search POST");
+        //System.out.println(date1);
 
         List<Work> works = workService.searchByDate(date1);
 
@@ -157,14 +157,11 @@ public class WorkWebController {
 
         Worker worker = workForm.getWorker();
         List<Work> works = workService.getAll().stream().filter(work1 -> work1.
-
                 getWorker().equals(worker)).collect(Collectors.toList());
-        //List<Work> works = workService.searchByWorkerId(workForm.getWorker().getId());
+
         List<Work> works2 = workService.getAll();
         works2.stream().forEach(el-> System.out.println(el));
-        System.out.println(workForm.getWorker().getId());
-        //System.out.println(workForm.getWorker());
-        //System.out.println(worker);
+
         model.addAttribute("works", works);
 
         return "worker/workList";
@@ -182,7 +179,6 @@ public class WorkWebController {
     }
 
     @RequestMapping(value = "/worker/work/update/{id}")
-
     String update(Model model, @PathVariable(value = "id") String id) {
 
         Work work = workService.get(id);

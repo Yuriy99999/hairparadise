@@ -29,10 +29,10 @@ public class WorkerWebController {
 
     @RequestMapping ("admin/worker/list")
     public String showAll1(Model model){
-        List<Worker> list = service.getAll();
-        model.addAttribute("workers", list);
+        List<Worker> worker = service.getAll();
+        model.addAttribute("workers", worker);
 
-        return "admin/workerList";
+        return "admin/adminWorkerList";
     }
 
     @RequestMapping(value = "worker/create", method = RequestMethod.GET)
@@ -54,16 +54,25 @@ public class WorkerWebController {
 
         service.create(worker);
 
-        return "redirect:/worker/list";
+        return "redirect:/admin/worker/list";
     }
 
     @RequestMapping("worker/delete/{id}")
     String delete(Model model, @PathVariable(value = "id") String id) {
         service.delete(id);
         List<Worker> list = service.getAll();
-        //model.addAttribute("workers", list);
+        model.addAttribute("workers", list);
         return "redirect:/worker/list";
 
+    }
+
+
+    @RequestMapping("admin/worker/delete/{id}")
+    String delete1(Model model, @PathVariable(value = "id") String id) {
+        service.delete(id);
+        List<Worker> list = service.getAll();
+        //model.addAttribute("workers", list);
+        return "redirect:/admin/worker/list";
     }
 
     @RequestMapping ("/worker")

@@ -9,16 +9,28 @@
     <link rel="stylesheet"
           type="text/css" href="<@spring.url '/css/style.css'/>"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-image: url('http://getwallpapers.com/wallpaper/full/d/b/0/272602.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h3>worker list</h3>
+<div>
+
     <br>
     <div>
 
-        <table class="table table-striped table-dark">
+        <table class="table table-striped">
 
-            <tr class="bg-warning">
+            <tr class="thead-light">
 
                 <th>Name</th>
                 <th>Surname</th>
@@ -31,8 +43,8 @@
                 <td>${worker.name}</td>
                 <td>${worker.surname}</td>
 
-                <td><a href="/worker/delete/${worker.id}"/>delete</td>
 
+                <td><a href="/admin/worker/delete/${worker.id}"/>delete</td>
 
             </tr>
         </#list>
@@ -41,7 +53,7 @@
 
     </div>
 
-    <a href="/worker/create">create new work</a>
+    <a href="/worker/create">create new worker</a>
 
 </div>
 
